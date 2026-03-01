@@ -804,6 +804,9 @@ export default function PracticeSession(props: Props) {
 
   const lastPromptRef = useRef<string | null>(null);
   const rerollGuardRef = useRef<number>(0);
+  // Timestamp of when the current "ok" banner was shown. Used to keep it visible
+  // for at least CORRECT_PAUSE_MS even when the item-change effect fires.
+  const bannerShownAtRef = useRef<number>(0);
 
   const item: ItemInstance | null =
     st.status === "presenting" || st.status === "feedback" ? ((st as any).item as ItemInstance) : null;
@@ -858,7 +861,12 @@ export default function PracticeSession(props: Props) {
     setRemainder("");
     setAttemptsLeft(MAX_ATTEMPTS_PER_ITEM);
     setShowHelp(false);
-    setBanner(null);
+    // Only clear the banner if it hasn't just been shown as a correct-answer confirmation.
+    // If it was shown very recently, let the scheduled setTimeout clear it instead.
+    const age = performance.now() - bannerShownAtRef.current;
+    if (age > CORRECT_PAUSE_MS) {
+      setBanner(null);
+    }
     setHoldForNext(false);
 
     // interactive kinds
@@ -1125,6 +1133,7 @@ export default function PracticeSession(props: Props) {
     if (outcome === "correct") {
       setBanner({ kind: "ok", title: "Korrekt" });
       setBannerPulse((p) => p + 1);
+      bannerShownAtRef.current = performance.now();
       setTimeout(() => safePlay("correct"), 30);
 
       const nextTheta = updateTheta(theta, b, 1);
@@ -1152,7 +1161,11 @@ export default function PracticeSession(props: Props) {
         item_b: b,
       });
 
-      setTimeout(() => advanceToNext(nextState, nextTheta), CORRECT_PAUSE_MS);
+      setTimeout(() => {
+        advanceToNext(nextState, nextTheta);
+        // Clear the banner after the new item has rendered
+        setTimeout(() => setBanner(null), 400);
+      }, CORRECT_PAUSE_MS);
       return;
     }
 
