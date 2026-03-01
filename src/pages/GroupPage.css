@@ -1,0 +1,345 @@
+.groupPage {
+  padding: 28px 24px;
+}
+
+.groupShell {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .groupShell {
+    grid-template-columns: 1fr;
+  }
+}
+
+.groupLeft {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+}
+
+@media (max-width: 900px) {
+  .groupLeft {
+    position: static;
+  }
+}
+
+.groupHero {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+  padding: 18px 18px 16px;
+}
+
+.groupBackWrap {
+  margin-top: 14px;
+}
+
+.groupBackBtn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(53, 104, 255, 0.55);
+  background: rgba(53, 104, 255, 0.92);
+
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.98);
+
+  box-shadow: 0 12px 30px rgba(53, 104, 255, 0.24);
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.groupBackBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 38px rgba(53, 104, 255, 0.32);
+}
+
+.groupBackBtn:focus-visible {
+  outline: 3px solid rgba(53, 104, 255, 0.35);
+  outline-offset: 2px;
+}
+
+.groupBackBtn:active {
+  transform: translateY(0px);
+  opacity: 0.96;
+}
+
+.groupHeroEyebrow {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.groupHeroTitle {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.groupHeroSub {
+  margin-top: 6px;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 13px;
+}
+
+.groupHeroStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.stat {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 10px 10px 9px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.statVal {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.statLbl {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 2px;
+}
+
+.groupHeroProgress {
+  margin-top: 12px;
+}
+
+.bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(53, 104, 255, 0.9);
+}
+
+.groupHeroHint {
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.58);
+  line-height: 1.35;
+}
+
+.groupRight {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 18px;
+}
+
+.levels {
+  display: grid;
+  gap: 18px;
+}
+
+.levelHeader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.levelPill {
+  border: 2px solid rgba(53, 104, 255, 0.7);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.82);
+  box-shadow: 0 10px 24px rgba(53, 104, 255, 0.12);
+}
+
+.levelNodes {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.nodeToken {
+  width: min(560px, 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.nodeToken:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+}
+
+.nodeTokenIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  background: rgba(53, 104, 255, 0.12);
+  color: rgba(53, 104, 255, 0.95);
+}
+
+.nodeToken.mastered .nodeTokenIcon {
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.nodeToken.current {
+  border-color: rgba(53, 104, 255, 0.7);
+  box-shadow: 0 18px 44px rgba(53, 104, 255, 0.14);
+}
+
+/* Make the "next" node extra obvious: badge + subtle pulsing outline */
+.nodeTokenBadge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  font-weight: 900;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(53, 104, 255, 0.92);
+  color: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(53, 104, 255, 0.55);
+  box-shadow: 0 10px 24px rgba(53, 104, 255, 0.22);
+  pointer-events: none;
+}
+
+.nodeToken.current::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  border: 2px solid rgba(53, 104, 255, 0.55);
+  box-shadow: 0 0 0 0 rgba(53, 104, 255, 0.0);
+  opacity: 0.95;
+  pointer-events: none;
+  animation: nodePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+    box-shadow: 0 0 0 0 rgba(53, 104, 255, 0.0);
+  }
+  55% {
+    transform: scale(1.008);
+    opacity: 1;
+    box-shadow: 0 0 0 12px rgba(53, 104, 255, 0.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+    box-shadow: 0 0 0 0 rgba(53, 104, 255, 0.0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodeToken.current::after {
+    animation: none;
+  }
+}
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  background: rgba(53, 104, 255, 0.92);
+  color: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(53, 104, 255, 0.55);
+  box-shadow: 0 10px 22px rgba(53, 104, 255, 0.22);
+}
+
+.nodeToken.disabled {
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.nodeToken.disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.nodeTokenText {
+  display: grid;
+  gap: 4px;
+}
+
+.nodeTokenTitle {
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.nodeTokenSub {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.nodeTokenBar {
+  margin-top: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.nodeTokenBarFill {
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(53, 104, 255, 0.85);
+}
+
+.groupEmpty {
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.groupEmptyTitle {
+  font-weight: 800;
+}
+
+.groupEmptySub {
+  margin-top: 6px;
+  color: rgba(0, 0, 0, 0.6);
+}

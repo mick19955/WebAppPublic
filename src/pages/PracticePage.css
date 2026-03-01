@@ -1,0 +1,28 @@
+/* PracticePage enter animation (fade + slight slide).
+   Fixes layout "jump" by reserving scrollbar gutter space. */
+
+:root{
+  /* Prevent horizontal layout shift when vertical scrollbar appears/disappears */
+  scrollbar-gutter: stable;
+}
+
+.practiceEnter{
+  opacity: 0;
+  transform: translateY(6px);
+  will-change: opacity, transform;
+}
+
+.practiceEnter.isIn{
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .practiceEnter,
+  .practiceEnter.isIn{
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

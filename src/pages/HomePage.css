@@ -1,0 +1,292 @@
+.lp {
+  padding: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.lpHeader {
+  margin: 10px 0 18px;
+}
+
+.lpTitle {
+  font-size: 28px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.lpSubtitle {
+  margin-top: 6px;
+  color: rgba(15, 23, 42, 0.7);
+  font-size: 14px;
+}
+
+.lpSection {
+  margin-top: 22px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.lpSectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 8px 0 10px;
+}
+
+.lpSectionTitle {
+  font-size: 18px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.lpSectionSub {
+  margin-top: 3px;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.62);
+}
+
+.lpAll {
+  text-decoration: none;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.lpAll:hover {
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.lpRailWrap {
+  position: relative;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(2, 6, 23, 0.06);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 14px 10px;
+  overflow: hidden; /* skjuler fades + arrows */
+}
+
+.lpRail {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  /* Brug programmatisk smooth scroll kun ved pil-knapper.
+     Under drag skal scroll følge pointeren 1:1 uden "sej" følelse. */
+  padding: 4px 6px 8px;
+  user-select: none;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  will-change: transform;
+}
+
+/* Overscroll "bounce" snap-back (Brilliant-lignende fornemmelse) */
+.lpRail.lpBounce {
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lpRail.isDragging {
+  transition: none;
+}
+
+.lpRail::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.lpRail.isDragging { cursor: grabbing; }
+.lpRail:not(.isDragging) { cursor: grab; }
+
+/* Fades vises kun når der er mere content i den retning */
+.lpFade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 54px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.lpFadeLeft {
+  left: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.lpFadeRight {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+/* Arrows */
+.lpArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.12);
+  font-size: 28px;
+  line-height: 42px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.lpArrow:hover {
+  background: #ffffff;
+}
+
+.lpArrowLeft {
+  left: 10px;
+}
+
+.lpArrowRight {
+  right: 10px;
+}
+
+/* Fade in/out + reelt skjult via pointer-events */
+.lpArrow.hide {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.98);
+}
+
+.lpArrow.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Cards */
+.lpCard {
+  position: relative;
+  flex: 0 0 190px;
+  height: 210px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  text-decoration: none;
+  color: #0f172a;
+  box-shadow: 0 8px 18px rgba(2, 6, 23, 0.05);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.lpCard:hover {
+  border-color: rgba(15, 23, 42, 0.22);
+}
+
+.lpCard.locked {
+  opacity: 0.78;
+}
+
+.lpCardArt {
+  height: 92px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.04);
+  display: grid;
+  place-items: center;
+}
+
+.lpCardGlyph {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.08);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+}
+
+.lpTag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  color: rgba(15, 23, 42, 0.82);
+}
+
+.lpTag.mestret {
+  background: rgba(16, 185, 129, 0.16);
+  color: rgba(4, 120, 87, 1);
+}
+
+.lpTag.i-gang {
+  background: rgba(59, 130, 246, 0.16);
+  color: rgba(30, 64, 175, 1);
+}
+
+.lpTag.ny {
+  background: rgba(234, 179, 8, 0.18);
+  color: rgba(161, 98, 7, 1);
+}
+
+.lpTag.låst {
+  background: rgba(148, 163, 184, 0.22);
+  color: rgba(51, 65, 85, 1);
+}
+
+.lpCardTitle {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.lpCardSub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(15, 23, 42, 0.62);
+  line-height: 1.25;
+  height: 32px;
+  overflow: hidden;
+}
+
+/* Mastery progressbar på node-kort */
+.lpProg {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.lpProgFill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.55);
+}
+
+.lpCard.locked .lpProgFill {
+  background: rgba(148, 163, 184, 0.75);
+}
+
+@media (max-width: 720px) {
+  .lp {
+    padding: 16px;
+  }
+  .lpCard {
+    flex-basis: 170px;
+  }
+  .lpArrow {
+    width: 40px;
+    height: 40px;
+    font-size: 26px;
+  }
+}
